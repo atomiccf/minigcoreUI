@@ -514,7 +514,7 @@ body {
 }
 
 .card {
-
+   padding-top: 35px;
   margin-top: 20px;
   margin-bottom: 20px;
   border-radius: 6px;
@@ -534,6 +534,7 @@ div.card-table {
 }
 
 div.card-chart {
+  padding-top: 35px;
   height: calc(100% - 40px);
 }
 
