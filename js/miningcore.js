@@ -23,21 +23,21 @@
 
 
 // read WebURL from current browser
-var WebURL         = window.location.protocol + "//" + window.location.hostname + "/";  // Website URL is:  https://domain.com/
+var WebURL         = 'http://52.59.226.84/';  // Website URL is:  https://domain.com/
 // WebURL correction if not ends with /
-if (WebURL.substring(WebURL.length-1) != "/")
+if (WebURL.substring(WebURL.length-1) !== "/")
 {
 	WebURL = WebURL + "/";
 	console.log('Corrected WebURL, does not end with / -> New WebURL : ', WebURL);
 }
-var API            = WebURL + "api/";   						// API address is:  https://domain.com/api/
+var API            = 'http://52.59.226.84:5000/api/';   						// API address is:  https://domain.com/api/
 // API correction if not ends with /
-if (API.substring(API.length-1) != "/")
+if (API.substring(API.length-1) !== "/")
 {
 	API = API + "/";
 	console.log('Corrected API, does not end with / -> New API : ', API);
 } 
-var stratumAddress = window.location.hostname;           				// Stratum address is:  domain.com
+var stratumAddress = 'stratum+tcp://52.59.226.84/';           				// Stratum address is:  domain.com
 
 
 
