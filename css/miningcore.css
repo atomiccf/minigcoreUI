@@ -261,6 +261,11 @@ body {
  overflow:hidden
 }
 
+.nav-dashboard {
+
+ display: none;
+
+}
 
 /*!***************************************************************
                   TABLES

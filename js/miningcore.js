@@ -261,7 +261,6 @@ function loadDashboardPage() {
   }
 }
 
-
 // Load MINERS page content
 function loadMinersPage() {
   return $.ajax(API + "pools/" + currentPool + "/miners?page=0&pagesize=20")
@@ -294,7 +293,6 @@ function loadMinersPage() {
       );
     });
 }
-
 
 // Load BLOCKS page content
 function loadBlocksPage() {
@@ -399,7 +397,7 @@ function loadConnectPage() {
 			connectPoolConfig += "<tr><td>Crypto Coin name</td><td>" + coinName + " (" + value.coin.type + ") </td></tr>";
 			//connectPoolConfig += "<tr><td>Coin Family line </td><td>" + value.coin.family + "</td></tr>";
 			connectPoolConfig += "<tr><td>Coin Algorithm</td><td>" + value.coin.algorithm + "</td></tr>";
-			connectPoolConfig += '<tr><td>Pool Wallet</td><td><a href="' + value.addressInfoLink + '" target="_blank">' + value.address.substring(0, 12) + " &hellip; " + value.address.substring(value.address.length - 12) + "</a></td></tr>";
+			/*connectPoolConfig += '<tr><td>Pool Wallet</td><td><a href="' + value.addressInfoLink + '" target="_blank">' + value.address.substring(0, 12) + " &hellip; " + value.address.substring(value.address.length - 12) + "</a></td></tr>";*/
 			connectPoolConfig += "<tr><td>Payout Scheme</td><td>" + value.paymentProcessing.payoutScheme + "</td></tr>";
 			connectPoolConfig += "<tr><td>Minimum Payment</td><td>" + value.paymentProcessing.minimumPayment + " " + value.coin.type + "</td></tr>";
 			if (typeof value.paymentProcessing.minimumPaymentToPaymentId !== "undefined") {
@@ -821,13 +819,15 @@ function loadNavigation() {
 	  var coinName = "";
 	  var poolList = "<ul class='navbar-nav '>";
       $.each(data.pools, function(index, value) {
+
 		poolList += "<li class='nav-item'>";
-        poolList += "  <a href='#" + value.id.toLowerCase() + "' class='nav-link coin-header" + (currentPool == value.id.toLowerCase() ? " coin-header-active" : "") + "'>"
-		poolList += "  <img  src='img/coin/icon/" + value.coin.type.toLowerCase() + ".png' /> " + value.coin.type;
+        poolList += "  <a href='#" + value.id.toLowerCase() + "' class='nav-link coin-header" + (currentPool === value.id.toLowerCase() ? " coin-header-active" : "") + "'>"
+		poolList += "  <img alt='coin' src='img/coin/icon/" + value.coin.type.toLowerCase() + ".png' /> " + value.coin.type;
         poolList += "  </a>";
 		poolList += "</li>";
+          console.log(poolList)
 		if (currentPool === value.id) {
-			coinLogo = "<img style='width:40px' src='img/coin/icon/" + value.coin.type.toLowerCase() + ".png' />";
+			coinLogo = "<img alt='coin logo' style='width:40px' src='img/coin/icon/" + value.coin.type.toLowerCase() + ".png' />";
 			coinName = value.coin.name;
 			if (typeof coinName === "undefined" || coinName === null) {
 				coinName = value.coin.type;
@@ -835,7 +835,7 @@ function loadNavigation() {
 		}
       });
       poolList += "</ul>";
-	  
+        console.log(poolList)
       if (poolList.length > 0) {
         $(".coin-list-header").html(poolList);
       }
@@ -843,16 +843,18 @@ function loadNavigation() {
 	  var sidebarList = "";
 	  const sidebarTemplate = $(".sidebar-template").html();
       sidebarList += sidebarTemplate
+
 		.replace(/{{ coinId }}/g, currentPool)
 		.replace(/{{ coinLogo }}/g, coinLogo)
 		.replace(/{{ coinName }}/g, coinName)
+        console.log(sidebarList)
       $(".sidebar-wrapper").html(sidebarList);
   
       $("a.link").each(function() {
 	    if (localStorage[currentPool + "-walletAddress"] && this.href.indexOf("/dashboard") > 0)
 	    {
 		  this.href = "#" + currentPool + "/dashboard?address=" + localStorage[currentPool + "-walletAddress"];
-	    } 
+	    }
       });
 
     })
@@ -869,3 +871,15 @@ function loadNavigation() {
     });
 }
 
+// Add year into footer
+function getYear() {
+
+    const link = document.getElementsByClassName('footer_date')
+    Array.from(link).forEach(item => {
+
+        item.innerHTML = `&copy; ${new Date().getFullYear()}`
+
+    })
+
+
+}
