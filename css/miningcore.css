@@ -824,7 +824,7 @@ div.card-chart {
   ##Device = Iphone 11  (landscape)
   ##Screen =  896px x 414px
 */
-@media (width: 896px) and (height:414px)  and (-webkit-device-pixel-ratio: 2) and (orientation: landscape) {
+@media (width: 896px) and (height:414px)  and (-webkit-device-pixel-ratio: 2)  {
     #pool-coins td {
         font-size: 0.9rem;
     }
@@ -835,7 +835,7 @@ div.card-chart {
   ##Screen =  896px x 414px
 */
 
-@media (width: 414px) and (height:896px)  and (-webkit-device-pixel-ratio: 2) and (orientation: portrait) {
+@media (width: 414px) and (height:896px)  and (-webkit-device-pixel-ratio: 2)  {
     .content-header > h1 {
         text-align: center;
 
