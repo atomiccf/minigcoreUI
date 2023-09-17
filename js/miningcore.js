@@ -873,13 +873,10 @@ function loadNavigation() {
 
 // Add year into footer
 function getYear() {
-
     const link = document.getElementsByClassName('footer_date')
     Array.from(link).forEach(item => {
 
         item.innerHTML = `&copy; ${new Date().getFullYear()}`
 
     })
-
-
 }
