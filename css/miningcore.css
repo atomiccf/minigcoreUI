@@ -682,7 +682,7 @@ div.card-chart {
 	}
 	
 	#pool-coins td {
-		font-size: 1.05rem;
+		font-size: 0.9rem;
 	}
 	
 	#pool-coins td.coin {
@@ -902,10 +902,23 @@ div.card-chart {
   ##Screen = B/w  479px
 */
 @media (max-width: 480px) {
-	.content-header {
+
+
+    #pool-coins .card-btn {
+
+        margin-left: 70px;
+        padding: 3%;
+
+    }
+
+    .content-header {
 		display: block;
 	}
-	
+
+    .content-header > h1 {
+        text-align: center;
+
+    }
 	.content-wrapper {
 		min-height:100%;
 		background-color:#ecf0f5;
@@ -918,7 +931,11 @@ div.card-chart {
 		border-top: 1px solid #dee2e6;
 		font-size: 0.9rem;
 	}
+    .card-body {
 
+        margin-top: 5px;
+
+    }
 	
 	/* Force table to not be like tables anymore */
 	#pool-coins table, thead, tbody, th, td, tr { 
@@ -989,35 +1006,5 @@ div.card-chart {
 	}
 }
 
-/*
-  ##Device = Iphone 11  (landscape)
-  ##Screen =  896px x 414px
-*/
-@media only screen  and (width: 896px) and (height:414px)  and (-webkit-device-pixel-ratio: 2)  {
-    #pool-coins td {
-        font-size: 0.9rem;
-    }
-}
 
-/*
-  ##Device = Iphone 11  (landscape)
-  ##Screen =  896px x 414px
-*/
 
-@media only screen  and (width: 414px) and (height:896px)  and (-webkit-device-pixel-ratio: 2)  {
-    .content-header > h1 {
-        text-align: center;
-
-    }
-    .card-body {
-
-        margin-top: 5px;
-
-    }
-    #pool-coins .card-btn {
-
-        margin-left: 70px;
-        padding: 3%;
-
-    }
-}
