@@ -819,6 +819,41 @@ div.card-chart {
   
 }
 
+
+/*
+  ##Device = Iphone 11  (landscape)
+  ##Screen =  896px x 414px
+*/
+@media (width: 896px) and (height:414px) and  (orientation: landscape) {
+    #pool-coins td {
+        font-size: 0.9rem;
+    }
+}
+
+/*
+  ##Device = Iphone 11  (landscape)
+  ##Screen =  896px x 414px
+*/
+
+@media (width: 414px) and (height:896px)  {
+    .content-header > h1 {
+        text-align: center;
+
+    }
+    .card-body {
+
+        margin-top: 5px;
+
+    }
+    #pool-coins .card-btn {
+
+        margin-left: 70px;
+        padding: 3%;
+
+    }
+}
+
+
 /* 
   ##Device = Low Resolution Tablets, Mobiles (Landscape)
   ##Screen = B/w 481px to 767px
