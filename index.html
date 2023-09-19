@@ -3,8 +3,7 @@
   
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta name="msapplication-TileImage" content="img/pool-icon.png">
   
   <title>Mining Pool</title>
@@ -153,16 +152,16 @@
 	
 <!-- INDEX HOME PAGE -->
 	<div class="page page-index">
-		<section class="content-header">
+		<div class="content-header">
 			<h1>MININGCORE<small>coins to mine</small></h1>
-		</section>
+		</div>
 		<div class="content container-fluid " >	
 			
 			<div class="col-12">
 				<div class="card card-shadow card-body">
 					<h5 class="card_header"> Welcome to Mining Pool</h5>
 					<hr>
-					<p>Low fee, high performance and a nice design.
+					<p class="page_index_content">Low fee, high performance and a nice design.
 						Pick a coin, connect you miner and make some coins.</p>
 					</div>
 			</div>
@@ -847,10 +846,12 @@
 
   <!-- Miningcore JS -->
   <script>
-    $(document).ready(function() {
-      loadIndex();
-	  getYear()
-    });
+
+	  document.addEventListener("DOMContentLoaded", function() {
+		  loadIndex();
+		  getYear()
+	  });
+
   </script>
 
 
