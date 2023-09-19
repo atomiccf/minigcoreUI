@@ -23,21 +23,21 @@
 
 
 // read WebURL from current browser
-var WebURL         = 'http://52.59.226.84/';  // Website URL is:  https://domain.com/
+let WebURL         = 'http://52.59.226.84/';  // Website URL is:  https://domain.com/
 // WebURL correction if not ends with /
 if (WebURL.substring(WebURL.length-1) !== "/")
 {
 	WebURL = WebURL + "/";
-	console.log('Corrected WebURL, does not end with / -> New WebURL : ', WebURL);
+
 }
-var API            = 'http://52.59.226.84:5000/api/';   						// API address is:  https://domain.com/api/
+let API            = 'http://52.59.226.84:5000/api/';   						// API address is:  https://domain.com/api/
 // API correction if not ends with /
 if (API.substring(API.length-1) !== "/")
 {
 	API = API + "/";
-	console.log('Corrected API, does not end with / -> New API : ', API);
+
 } 
-var stratumAddress = 'stratum+tcp://52.59.226.84/';           				// Stratum address is:  domain.com
+let stratumAddress = 'stratum+tcp://52.59.226.84/';           				// Stratum address is:  domain.com
 
 
 
@@ -46,20 +46,20 @@ var stratumAddress = 'stratum+tcp://52.59.226.84/';           				// Stratum add
 
 
 
-// --------------------------------------------------------------------------------------------
+/*// --------------------------------------------------------------------------------------------
 // no need to change anything below here
 // --------------------------------------------------------------------------------------------
 console.log('MiningCore.WebUI : ', WebURL);		                      // Returns website URL
 console.log('API address used : ', API);                                      // Returns API URL
 console.log('Stratum address  : ', "stratum+tcp://" + stratumAddress + ":");  // Returns Stratum URL
-console.log('Page Load        : ', window.location.href);                     // Returns full URL
+console.log('Page Load        : ', window.location.href);                     // Returns full URL*/
 
 currentPage = "index"
 
 // check browser compatibility
-var nua = navigator.userAgent;
+let nua = navigator.userAgent;
 //var is_android = ((nua.indexOf('Mozilla/5.0') > -1 && nua.indexOf('Android ') > -1 && nua.indexOf('AppleWebKit') > -1) && !(nua.indexOf('Chrome') > -1));
-var is_IE = ((nua.indexOf('Mozilla/5.0') > -1 && nua.indexOf('Trident') > -1) && !(nua.indexOf('Chrome') > -1));
+let is_IE = ((nua.indexOf('Mozilla/5.0') > -1 && nua.indexOf('Trident') > -1) && !(nua.indexOf('Chrome') > -1));
 if(is_IE) {
 	console.log('Running in IE browser is not supported - ', nua);
 }
@@ -73,7 +73,7 @@ function loadIndex() {
   $(".page-wrapper").show();
   $(".page-footer").show();
   
-  var hashList = window.location.hash.split(/[#/?=]/);
+  let hashList = window.location.hash.split(/[#/?=]/);
   //var fullHash = document.URL.substr(document.URL.indexOf('#')+1);   //IE
   // example: #vtc/dashboard?address=VttsC2.....LXk9NJU
   currentPool    = hashList[1];
@@ -161,11 +161,11 @@ function loadHomePage() {
       const poolCoinCardTemplate = $(".index-coin-card-template").html();
 	  //const poolCoinTableTemplate = "";  //$(".index-coin-table-template").html();
 	  
-	  var poolCoinTableTemplate = "";
+	  let poolCoinTableTemplate = "";
 		
       $.each(data.pools, function(index, value) {
  
-        var coinLogo = "<img class='coinimg' src='img/coin/icon/" + value.coin.type.toLowerCase() + ".png' />";
+        var coinLogo = "<img class='coinimg' alt='coinimg' src='img/coin/icon/" + value.coin.type.toLowerCase() + ".png' />";
 		var coinName = value.coin.name;
 		if (typeof coinName === "undefined" || coinName === null) {coinName = value.coin.type;} 
         		
@@ -265,7 +265,7 @@ function loadDashboardPage() {
 function loadMinersPage() {
   return $.ajax(API + "pools/" + currentPool + "/miners?page=0&pagesize=20")
     .done(function(data) {
-      var minerList = "";
+      let minerList = "";
       if (data.length > 0) {
         $.each(data, function(index, value) {
           minerList += "<tr>";
@@ -429,7 +429,7 @@ function loadConnectPage() {
 	  $("#miner-config").html("");
       $("#miner-config").load("poolconfig/" + coinType + ".html",
         function( response, status, xhr ) {
-          if ( status == "error" ) {
+          if ( status === "error" ) {
 			$("#miner-config").load("poolconfig/default.html",
 			  function(responseText){
 				var config = $("#miner-config")
@@ -544,11 +544,7 @@ function doesFileExist(urlToFile) {
     xhr.open('HEAD', urlToFile, false);
     xhr.send();
      
-    if (xhr.status == "404") {
-        return false;
-    } else {
-        return true;
-    }
+    return xhr.status != "404";
 }
 
 
@@ -752,7 +748,7 @@ function loadDashboardChart(walletAddress) {
 		
         $.each(data, function(index, value) {
           if (labels.length === 0 || (labels.length + 1) % 4 === 1) {
-            var createDate = convertLocalDateToUTCDate(
+            let createDate = convertLocalDateToUTCDate(
               new Date(value.created),
               false
             );
@@ -760,7 +756,7 @@ function loadDashboardChart(walletAddress) {
           } else {
             labels.push("");
           }
-          var workerHashRate = 0;
+          let workerHashRate = 0;
           $.each(value.workers, function(index2, value2) {workerHashRate += value2.hashrate;});
           minerHashRate.push(workerHashRate);
         });
@@ -782,7 +778,7 @@ function loadDashboardChart(walletAddress) {
             divisor: 2
           })
         };
-        var responsiveOptions = [
+        let responsiveOptions = [
           [
           "screen and (max-width: 320px)",
           {
@@ -815,9 +811,9 @@ function loadDashboardChart(walletAddress) {
 function loadNavigation() {
   return $.ajax(API + "pools")
     .done(function(data) {
-	  var coinLogo = "";
-	  var coinName = "";
-	  var poolList = "<ul class='navbar-nav '>";
+	  let coinLogo = "";
+	  let coinName = "";
+	  let poolList = "<ul class='navbar-nav '>";
       $.each(data.pools, function(index, value) {
 
 		poolList += "<li class='nav-item'>";
@@ -825,8 +821,7 @@ function loadNavigation() {
 		poolList += "  <img alt='coin' src='img/coin/icon/" + value.coin.type.toLowerCase() + ".png' /> " + value.coin.type;
         poolList += "  </a>";
 		poolList += "</li>";
-          console.log(poolList)
-		if (currentPool === value.id) {
+     if (currentPool === value.id) {
 			coinLogo = "<img alt='coin logo' style='width:40px' src='img/coin/icon/" + value.coin.type.toLowerCase() + ".png' />";
 			coinName = value.coin.name;
 			if (typeof coinName === "undefined" || coinName === null) {
@@ -835,19 +830,17 @@ function loadNavigation() {
 		}
       });
       poolList += "</ul>";
-        console.log(poolList)
       if (poolList.length > 0) {
         $(".coin-list-header").html(poolList);
       }
 	  
-	  var sidebarList = "";
+	  let sidebarList = "";
 	  const sidebarTemplate = $(".sidebar-template").html();
       sidebarList += sidebarTemplate
 
-		.replace(/{{ coinId }}/g, currentPool)
+		.replace(/'coinId'/g, currentPool)
 		.replace(/{{ coinLogo }}/g, coinLogo)
 		.replace(/{{ coinName }}/g, coinName)
-        console.log(sidebarList)
       $(".sidebar-wrapper").html(sidebarList);
   
       $("a.link").each(function() {
