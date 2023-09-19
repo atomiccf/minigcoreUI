@@ -384,6 +384,7 @@ function loadPaymentsPage() {
 function loadConnectPage() {
     return $.ajax(API + "pools")
         .done(function(data) {
+
             var connectPoolConfig = "";
             $.each(data.pools, function(index, value) {
                 if (currentPool === value.id) {
@@ -843,9 +844,9 @@ function loadNavigation() {
             const sidebarTemplate = $(".sidebar-template").html();
             sidebarList += sidebarTemplate
 
-                .replace(/{{ coinId }}/g, currentPool)
-                .replace(/{{ coinLogo }}/g, coinLogo)
-                .replace(/{{ coinName }}/g, coinName)
+                .replace(/coinId/g, `#${currentPool}`)
+                .replace(/coinLogo/g, `${coinLogo}`)
+                .replace(/coinName/g, `${coinName}`)
             $(".sidebar-wrapper").html(sidebarList);
 
             $("a.link").each(function() {
