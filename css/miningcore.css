@@ -334,6 +334,9 @@ body {
     position: relative;
 
 }
+#pool-coins td {
+    font-size: 1.0rem;
+}
 
 	#pool-coins td.coin {
 		overflow: hidden;
@@ -342,8 +345,8 @@ body {
 		vertical-align: middle;
 		font-size: 1rem;
 	}
-	
-	#pool-coins img.coinimg {
+
+    	#pool-coins img.coinimg {
 		width: 32px;
 		height: 32px;
 		vertical-align: middle;
@@ -685,7 +688,7 @@ div.card-chart {
 	}
 	
 	#pool-coins td {
-		font-size: 0.9rem;
+		font-size: 1.05rem;
 	}
 	
 	#pool-coins td.coin {
@@ -818,8 +821,10 @@ div.card-chart {
   ##Device = Tablets, Ipads (landscape)
   ##Screen = B/w 768px 
 */
-@media (min-width: 768px) and (orientation: landscape) {
-  
+@media (width: 896px) and (orientation: landscape) {
+    #pool-coins td {
+        font-size: 0.9rem;
+    }
 }
 
 
